@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
-import { OrderStatusDialog } from "./data-table/order-status-dialog"
+import { OrderStatusDialog } from "./orders/order-status-dialog"
 
 const statusStyles: Record<Order["status"], string> = {
   pending: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300",
