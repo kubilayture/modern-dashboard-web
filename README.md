@@ -1,73 +1,120 @@
-# React + TypeScript + Vite
+# Modern Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive admin dashboard built with React 19, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** with TypeScript
+- **Vite** (rolldown-vite) for fast development and builds
+- **Tailwind CSS v4** for styling
+- **shadcn/ui** components with Radix UI primitives
+- **React Router v7** for routing
+- **TanStack Query** for server state management
+- **TanStack Table** for advanced data tables
+- **Zustand** for client state management
+- **Recharts** for data visualization
+- **i18next** for internationalization (EN/TR)
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Dashboard with KPI cards and charts
+- Orders management with status updates
+- Products management (CRUD)
+- Categories management (CRUD)
+- Customers management (CRUD)
+- Detail pages for all entities
+- Advanced data tables with sorting, filtering, and pagination
+- Responsive design with mobile card views
+- Dark/Light theme support
+- Multi-language support (English/Turkish)
+- Protected routes with authentication
+- Toast notifications
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 18+
+- npm or yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### Build
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```
+src/
+├── api/              # Mock API layer with simulated latency
+├── components/
+│   ├── auth/         # ProtectedRoute component
+│   ├── cards/        # Mobile card components
+│   ├── charts/       # Recharts wrapper components
+│   ├── dashboard/    # KPI stats components
+│   ├── forms/        # Profile and password forms
+│   ├── layout/       # Sidebar, Header, ContentWrapper
+│   ├── settings/     # Appearance and notification settings
+│   ├── table/        # Reusable TanStack Table components
+│   └── ui/           # shadcn/ui primitives
+├── hooks/            # TanStack Query hooks
+├── i18n/             # Internationalization config and locales
+├── layouts/          # DashboardLayout, AuthLayout
+├── lib/              # Utility functions
+├── pages/            # Route page components
+├── store/            # Zustand stores
+└── types/            # TypeScript interfaces
+```
+
+## State Management
+
+Zustand stores in `src/store/`:
+
+- `useAuthStore` - Authentication state with localStorage persistence
+- `useThemeStore` - Light/dark theme with localStorage persistence
+- `useSidebarStore` - Sidebar collapse/mobile state
+
+## Data Tables
+
+Reusable table components in `src/components/table/`:
+
+- `DataTable` - Main table component
+- `DataTableColumnHeader` - Sortable column headers
+- `DataTablePagination` - Page size and navigation
+- `DataTableViewOptions` - Column visibility toggle
+- `DataTableFilterSelect` - Dropdown filters
+- `DataTableFilterRange` - Min/max numeric filters
+- `DataTableFilterDateRange` - Date range filters
+
+## Mock API
+
+All data fetching uses mock API functions in `src/api/` that return Promises with simulated delays. Replace with real API calls by updating these functions.
+
+## License
+
+MIT
